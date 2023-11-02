@@ -51,7 +51,7 @@ pipeline{
             steps {
 
 
-  sh 'mvn clean package deploy:deploy-file -DgroupId=tn.esprit.devops_project -DartifactId=DevOps_Project -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=maven-releases -Durl=http://192.168.56.2:8081/repository/DevOps_Project/ -Dfile=target/DevOps_Project-1.0.jar'
+  sh 'mvn deploy'
 
 
             }
