@@ -15,11 +15,11 @@ pipeline{
         }
 
 
-       /*stage('Cleaning the project') {
+       stage('Cleaning the project') {
             steps{
                 	sh "mvn -B -DskipTests clean  "
             }
-        }*/
+        }
 
 
 
@@ -31,7 +31,11 @@ pipeline{
 
 
 
-         
+         stage('JUnit / Mockito') {
+            steps{
+               		 sh "mvn test "
+            }
+        }
 
 
 
@@ -91,7 +95,7 @@ stage('Build Docker Image') {
 }
 
 
-        post {
+    /*    post {
 		success{
 		mail bcc: '', body: '''Dear Houssem Toumi,
 we are happy to inform you that your pipeline build was successful.
@@ -112,7 +116,7 @@ Keep working !
        }
     }
 
-
+*/
 
 }
 
