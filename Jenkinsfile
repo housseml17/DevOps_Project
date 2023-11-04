@@ -38,7 +38,13 @@ pipeline{
         }
 
 
-
+stage('Run Spring && MySQL Containers') {
+                                steps {
+                                    script {
+                                      sh 'docker-compose up -d'
+                                    }
+                                }
+                            }
         stage('SONARQUBE') {
             steps{
 
@@ -79,13 +85,7 @@ stage('Build Docker Image') {
 		  }
 
 
-		   stage('Run Spring && MySQL Containers') {
-                                steps {
-                                    script {
-                                      sh 'docker-compose up -d'
-                                    }
-                                }
-                            }
+
 
 
 
