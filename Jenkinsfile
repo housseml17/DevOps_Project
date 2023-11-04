@@ -37,7 +37,13 @@ pipeline{
             }
         }
 
-
+stage('Test & Jacoco Static Analysis') {
+    	    steps {
+               // Analysis of Test using Junit + Jacoco (Mockito + Junit)
+          	  	junit 'target/surefire-reports/*.xml'
+          		jacoco()
+		   }
+        }
 stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
