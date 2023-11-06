@@ -94,6 +94,65 @@ stage('Build Docker Image') {
 
 
 
+stage('Build Angular') {
+            steps {
+                dir('front') {
+                    sh 'npm install'
+                    sh 'npm run build '
+                }
+            }
+        }
+
+
+        stage("clone frontend"){
+         steps{
+             script{
+                   checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/housseml17/front.git"
+
+
+]]])
+             }
+         }
+
+
+
+     }
+
+stage("build and push frontend docker image") {
+
+
+            steps {
+                script {
+
+              echo "connexion"
+
+              def dockerUsername ="toumi15"
+              def dockerPassword = "Toutvabien97818410 . ."
+
+
+
+            sh " docker login -u ${dockerUsername} -p ${dockerPassword} "
+
+
+
+
+            echo "Building Docker image..."
+             sh "docker build --no-cache -t front:latest ."
+
+
+            echo "renommer l'image"
+             sh "docker tag front:latest aziz1123/front-app"
+            echo "Pushing Docker image to Docker Hub..."
+             sh "docker push toumi15/front-app:latest"
+
+            echo "Docker image successfully pushed to Docker Hub."
+                }
+            }
+
+
+
+
+            }
 
 
 
