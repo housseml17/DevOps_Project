@@ -31,11 +31,6 @@ pipeline{
 
 
 
-         stage('JUnit / Mockito') {
-            steps{
-               		 sh "mvn test "
-            }
-        }
 
 stage('Test & Jacoco Static Analysis') {
     	    steps {
