@@ -31,62 +31,42 @@ pipeline{
 
 
 
-<<<<<<< HEAD
          stage('JUnit / Mockito') {
             steps{
                		 sh "mvn test "
             }
         }
 
-stage('Run Spring && MySQL Containers') {
-                                steps {
-                                    script {
-                                      sh 'docker-compose up -d'
-                                    }
-                                }
-                            }
+
+
         stage('SONARQUBE') {
             steps{
 
              		sh " mvn clean verify sonar:sonar -Dsonar.projectKey=DevOps_Project -Dsonar.projectName='DevOps_Project' -Dsonar.host.url=http://192.168.56.2:9000 -Dsonar.token=sqp_313fd4947b5c9b8ca0ba0214ca027607fd9955f8 "
             }
         }
-=======
-        
->>>>>>> 367875389a23430fa532ac07124c0a38fc7ae208
 
 
+        stage('Publish to Nexus') {
+            steps {
 
 
-        stage("clone frontend"){
-         steps{
-             script{
-                   checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/housseml17/front.git"
+  sh 'mvn deploy'
 
 
-]]])
-             }
-         }
+            }
+        }
 
-<<<<<<< HEAD
 stage('Build Backend Docker Image') {
-=======
-
-
-     }
-	    stage('Build Docker Image') {
->>>>>>> 367875389a23430fa532ac07124c0a38fc7ae208
                       steps {
                           script {
-                            sh 'docker build -t toumi15/front-app:Toumi .'
+                            sh 'docker build -t toumi15/spring-app:Toumi .'
                           }
                       }
                   }
 
-<<<<<<< HEAD
                   stage('login dockerhub') {
                                         steps {
-
 				sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
                                             }
 		  }
@@ -108,7 +88,7 @@ stage('Build Backend Docker Image') {
          }
 
 
-=======
+
  stage("build and push frontend docker image") {
         
          
@@ -126,7 +106,7 @@ stage('Build Backend Docker Image') {
              
                 
             }
->>>>>>> 367875389a23430fa532ac07124c0a38fc7ae208
+
 
      }
 	    stage('Build Frontend Docker Image') {
@@ -154,7 +134,13 @@ stage('Build Backend Docker Image') {
 
 
             }
-
+stage('Run Spring && MySQL Containers') {
+                                steps {
+                                    script {
+                                      sh 'docker-compose up -d'
+                                    }
+                                }
+                            }
 
 
 
