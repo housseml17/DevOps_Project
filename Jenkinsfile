@@ -49,6 +49,13 @@ pipeline{
 
 
      }
+	    stage('Build Docker Image') {
+                      steps {
+                          script {
+                            sh 'docker build -t toumi15/spring-app:Toumi .'
+                          }
+                      }
+                  }
 
  stage("build and push frontend docker image") {
         
@@ -60,11 +67,6 @@ pipeline{
                      
              sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
          
-            
-           
-            echo "Building Docker image..."
-             sh "docker build -t toumi15/spring-app:Toumi ." 
-           
 
             echo "renommer l'image"
              sh "docker tag front:latest toumi15/front-app"
