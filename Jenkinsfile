@@ -58,13 +58,7 @@ pipeline{
  
               echo "connexion"
                      
-              def dockerUsername ="toumi15" 
-              def dockerPassword = "dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg"
-              
-
-            
-            sh " docker login -u ${dockerUsername} -p ${dockerPassword} " 
-            
+             sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
          
             
            
