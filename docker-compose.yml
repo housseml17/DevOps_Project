@@ -31,7 +31,7 @@ services:
     ports:
       - "8082:8082"
 angular-app:
-    image:  toumi15/front-app:latest
+    image:  toumi15/front-app:Toumi
     ports:
       - "4200:80"  # Adapter le port selon les spécifications de votre application Angular
     depends_on:
