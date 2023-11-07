@@ -49,29 +49,6 @@ pipeline{
             }
         }
 
-stage('Build Docker Image') {
-                      steps {
-                          script {
-                            sh 'docker build -t toumi15/spring-app:Toumi .'
-                          }
-                      }
-                  }
-
-                  stage('login dockerhub') {
-                                        steps {
-                                     // sh 'echo dckr_pat_-SnwrdC_ELsL6it2JT6cgIcAlrs | docker login -u azizbenhaha --password-stdin'
-				sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
-                                            }
-		  }
-
-	                      stage('Push Docker Image') {
-                                        steps {
-                                   sh 'docker push toumi15/spring-app:Toumi'
-                                            }
-		  }
-
-
-
 
 
 stage('Build Angular') {
