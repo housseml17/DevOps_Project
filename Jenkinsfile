@@ -35,18 +35,6 @@ pipeline{
 
 
 
-stage('Build Angular') {
-            steps {
-                dir('front') {
-                    dir('/var/lib/jenkins/workspace/front') {
-                        script {
-                            sh 'npm install'
-                            sh 'npm run build'
-                    }
-                }
-            }
-	    }
-}
 
         stage("clone frontend"){
          steps{
