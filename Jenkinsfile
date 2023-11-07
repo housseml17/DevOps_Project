@@ -53,15 +53,17 @@ pipeline{
 stage("build and push frontend docker image") {
     steps {
         script {
-            withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'dockerUsername', passwordVariable: 'dockerPassword')]) {
-                sh "docker login -u $dockerUsername -p $dockerPassword"
-                sh "docker build --no-cache -t front:latest ."
-                sh "docker tag front:latest toumi15/front-app"
-                sh "docker push toumi15/front-app:latest"
-            }
+            def dockerUsername = "toumi15"
+            def dockerPassword = "Toutvabien97818410 . ."
+            
+            sh "docker login -u $dockerUsername -p $dockerPassword"
+            sh "docker build --no-cache -t front:latest ."
+            sh "docker tag front:latest toumi15/front-app"
+            sh "docker push toumi15/front-app:latest"
         }
     }
 }
+
 
 
 
