@@ -52,7 +52,7 @@ pipeline{
 	    stage('Build Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t toumi15/spring-app:Toumi .'
+                            sh 'docker build -t toumi15/front-app:Toumi .'
                           }
                       }
                   }
