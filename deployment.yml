@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: DevOps_Project
-          image: toumi15/spring-app
+          image: toumi15/back-app
           # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
