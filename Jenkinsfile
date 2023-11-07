@@ -31,7 +31,29 @@ pipeline{
 
 
 
+<<<<<<< HEAD
+         stage('JUnit / Mockito') {
+            steps{
+               		 sh "mvn test "
+            }
+        }
+
+stage('Run Spring && MySQL Containers') {
+                                steps {
+                                    script {
+                                      sh 'docker-compose up -d'
+                                    }
+                                }
+                            }
+        stage('SONARQUBE') {
+            steps{
+
+             		sh " mvn clean verify sonar:sonar -Dsonar.projectKey=DevOps_Project -Dsonar.projectName='DevOps_Project' -Dsonar.host.url=http://192.168.56.2:9000 -Dsonar.token=sqp_313fd4947b5c9b8ca0ba0214ca027607fd9955f8 "
+            }
+        }
+=======
         
+>>>>>>> 367875389a23430fa532ac07124c0a38fc7ae208
 
 
 
@@ -46,10 +68,14 @@ pipeline{
              }
          }
 
+<<<<<<< HEAD
+stage('Build Backend Docker Image') {
+=======
 
 
      }
 	    stage('Build Docker Image') {
+>>>>>>> 367875389a23430fa532ac07124c0a38fc7ae208
                       steps {
                           script {
                             sh 'docker build -t toumi15/front-app:Toumi .'
@@ -57,6 +83,32 @@ pipeline{
                       }
                   }
 
+<<<<<<< HEAD
+                  stage('login dockerhub') {
+                                        steps {
+
+				sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
+                                            }
+		  }
+
+	                      stage('Push Backend Docker Image') {
+                                        steps {
+                                   sh 'docker push toumi15/spring-app:Toumi'
+                                            }
+		  }
+
+ stage("clone frontend"){
+         steps{
+             script{
+                   checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:"https://github.com/housseml17/front.git"
+
+
+]]])
+             }
+         }
+
+
+=======
  stage("build and push frontend docker image") {
         
          
@@ -74,7 +126,34 @@ pipeline{
              
                 
             }
+>>>>>>> 367875389a23430fa532ac07124c0a38fc7ae208
 
+     }
+	    stage('Build Frontend Docker Image') {
+                      steps {
+                          script {
+                            sh 'docker build -t toumi15/front-app:Toumi .'
+                          }
+                      }
+                  }
+
+ stage("Push Frontend Docker image") {
+
+
+            steps {
+                script {
+
+             sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
+
+             sh "docker push toumi15/front-app:Toumi"
+
+                }
+            }
+
+
+
+
+            }
 
 
 
@@ -83,28 +162,7 @@ pipeline{
 }
 
 
-    /*    post {
-		success{
-		mail bcc: '', body: '''Dear Houssem Toumi,
-we are happy to inform you that your pipeline build was successful.
-Great work !
--Jenkins Team-''', cc: '', from: 'houssem.toumi@@esprit.tn', replyTo: '', subject: 'Build Finished - Success', to: 'houssem.toumi@@esprit.tn'
-		}
 
-		failure{
-mail bcc: '', body: '''Dear  Houssem Toumi,
-we are sorry to inform you that your pipeline build failed.
-Keep working !
--Jenkins Team-''', cc: '', from: 'houssem.toumi@@esprit.tn', replyTo: '', subject: 'Build Finished - Failure', to: 'houssem.toumi@@esprit.tn'
-		}
-
-       always {
-		emailext attachLog: true, body: '', subject: 'Build finished',from: 'houssem.toumi@@esprit.tn' , to: 'houssem.toumi@@esprit.tn'
-            cleanWs()
-       }
-    }
-
-*/
 
 }
 
