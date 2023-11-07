@@ -71,7 +71,7 @@ pipeline{
             echo "renommer l'image"
              sh "docker tag front:latest toumi15/front-app"
             echo "Pushing Docker image to Docker Hub..."
-             sh "docker push toumi15/front-app:latest"
+             sh "docker push toumi15/front-app:Toumi"
            
             echo "Docker image successfully pushed to Docker Hub."
                 }
