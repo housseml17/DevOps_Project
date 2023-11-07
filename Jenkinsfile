@@ -69,11 +69,11 @@ pipeline{
             
            
             echo "Building Docker image..."
-             sh "docker build  -t frontend:latest ." 
+             sh "docker build  -t front:latest ." 
            
 
             echo "renommer l'image"
-             sh "docker tag frontend:latest aziz1123/front-app"
+             sh "docker tag front:latest toumi15/front-app"
             echo "Pushing Docker image to Docker Hub..."
              sh "docker push toumi15/front-app:latest"
            
