@@ -44,7 +44,7 @@ stage('Build Angular') {
                     }
                 }
             }
-
+}
 
         stage("clone frontend"){
          steps{
