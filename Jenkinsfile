@@ -62,18 +62,11 @@ pipeline{
          
             steps {
                 script {
- 
-              echo "connexion"
                      
              sh 'docker login -u toumi15 --password dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg'
          
-
-            echo "renommer l'image"
-             sh "docker tag front:latest toumi15/front-app"
-            echo "Pushing Docker image to Docker Hub..."
              sh "docker push toumi15/front-app:Toumi"
            
-            echo "Docker image successfully pushed to Docker Hub."
                 }
             }
                 
