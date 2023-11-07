@@ -69,7 +69,7 @@ pipeline{
             
            
             echo "Building Docker image..."
-             sh "docker build  -t front:latest ." 
+             sh "docker build -t toumi15/spring-app:Toumi ." 
            
 
             echo "renommer l'image"
