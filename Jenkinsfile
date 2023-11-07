@@ -54,7 +54,7 @@ stage("build and push frontend docker image") {
     steps {
         script {
             def dockerUsername = "toumi15"
-            def dockerPassword = "Toutvabien97818410 . ."
+            def dockerPassword = "dckr_pat_0iaom9peVjYUg0VIvUkeT-5V4bg"
             
             sh "docker login -u $dockerUsername -p $dockerPassword"
             sh "docker build --no-cache -t front:latest ."
