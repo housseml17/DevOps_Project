@@ -87,7 +87,7 @@ stage('Build Backend Docker Image') {
              }
          }
 
- }s
+ }
 
  stage("build and push frontend docker image") {
         
