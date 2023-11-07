@@ -69,7 +69,7 @@ pipeline{
             
            
             echo "Building Docker image..."
-             sh "docker build --no-cache -t frontend:latest ." 
+             sh "docker build  -t frontend:latest ." 
            
 
             echo "renommer l'image"
