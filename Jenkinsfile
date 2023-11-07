@@ -38,11 +38,12 @@ pipeline{
 stage('Build Angular') {
             steps {
                 dir('front') {
-                    sh 'npm install'
-                    sh 'npm run build '
+                    script {
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
                 }
             }
-        }
 
 
         stage("clone frontend"){
