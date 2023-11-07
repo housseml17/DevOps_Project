@@ -38,9 +38,10 @@ pipeline{
 stage('Build Angular') {
             steps {
                 dir('front') {
-                    script {
-                        sh 'npm install'
-                        sh 'npm run build'
+                    dir('/var/lib/jenkins/workspace/front') {
+                        script {
+                            sh 'npm install'
+                            sh 'npm run build'
                     }
                 }
             }
