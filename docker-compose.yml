@@ -21,7 +21,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=devops
   spring-app:
-    image: toumi15/back-app:Toumi
+    image: toumi15/spring-app:Toumi
     depends_on:
       - mysql
     environment:
