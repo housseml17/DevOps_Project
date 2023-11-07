@@ -98,7 +98,7 @@ stage("build and push frontend docker image") {
 
 
             echo "renommer l'image"
-             sh "docker tag front:latest aziz1123/front-app"
+             sh "docker tag front:latest toumi15/front-app"
             echo "Pushing Docker image to Docker Hub..."
              sh "docker push toumi15/front-app:latest"
 
