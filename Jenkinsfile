@@ -51,40 +51,18 @@ pipeline{
      }
 
 stage("build and push frontend docker image") {
-
-
-            steps {
-                script {
-
-              echo "connexion"
-
-              def dockerUsername ="toumi15"
-              def dockerPassword = "Toutvabien97818410 . ."
-
-
-
-            sh " docker login -u ${dockerUsername} -p ${dockerPassword} "
-
-
-
-
-            echo "Building Docker image..."
-             sh "docker build --no-cache -t front:latest ."
-
-
-            echo "renommer l'image"
-             sh "docker tag front:latest toumi15/front-app"
-            echo "Pushing Docker image to Docker Hub..."
-             sh "docker push toumi15/front-app:latest"
-
-            echo "Docker image successfully pushed to Docker Hub."
-                }
+    steps {
+        script {
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'dockerUsername', passwordVariable: 'dockerPassword')]) {
+                sh "docker login -u $dockerUsername -p $dockerPassword"
+                sh "docker build --no-cache -t front:latest ."
+                sh "docker tag front:latest toumi15/front-app"
+                sh "docker push toumi15/front-app:latest"
             }
+        }
+    }
+}
 
-
-
-
-            }
 
 
 
