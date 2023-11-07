@@ -29,7 +29,13 @@ pipeline{
             }
         }
 
-
+stage('Run Spring && MySQL Containers') {
+                                steps {
+                                    script {
+                                      sh 'docker-compose up -d'
+                                    }
+                                }
+                            }
 
          stage('JUnit / Mockito') {
             steps{
@@ -134,13 +140,7 @@ stage('Build Backend Docker Image') {
 
 
             }
-stage('Run Spring && MySQL Containers') {
-                                steps {
-                                    script {
-                                      sh 'docker-compose up -d'
-                                    }
-                                }
-                            }
+
 
 
 
