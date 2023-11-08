@@ -138,11 +138,12 @@ stage('Build Backend Docker Image') {
 
 
 stage('Run Spring && MySQL Containers') {
-                               /* steps {
+                                steps {
                                     script {
-                                      sh 'docker-compose up -d'
+                                      echo "MySql"
+					    //sh 'docker-compose up -d'
                                     }
-                                }*/
+                                }
                             }
 
 
