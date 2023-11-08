@@ -32,9 +32,9 @@ pipeline{
 
 
          stage('JUnit / Mockito') {
-            steps{
-               		/* sh "mvn test " */
-            }
+            /*steps{
+               		 sh "mvn test " 
+            }*/
         }
 
 
@@ -137,11 +137,11 @@ stage('Build Backend Docker Image') {
 
 
 stage('Run Spring && MySQL Containers') {
-                                steps {
+                               /* steps {
                                     script {
-                                     // sh 'docker-compose up -d'
+                                      sh 'docker-compose up -d'
                                     }
-                                }
+                                }*/
                             }
 
 
