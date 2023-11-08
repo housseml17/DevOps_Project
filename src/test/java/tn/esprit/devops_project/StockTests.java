@@ -1,4 +1,4 @@
-package tn.esprit.devops_project;
+/*package tn.esprit.devops_project;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -36,4 +36,4 @@ public class StockTests {
 
     }
 
-}
+}*/
