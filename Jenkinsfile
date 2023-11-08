@@ -31,12 +31,12 @@ pipeline{
 
 
 
-       /*  stage('JUnit / Mockito') {
+         stage('JUnit / Mockito') {
             steps{
-               		 sh "mvn test "
+               		/* sh "mvn test " */
             }
         }
-*/
+
 
 
         stage('SONARQUBE') {
@@ -139,7 +139,7 @@ stage('Build Backend Docker Image') {
 stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
-                                      sh 'docker-compose up -d'
+                                     // sh 'docker-compose up -d'
                                     }
                                 }
                             }
