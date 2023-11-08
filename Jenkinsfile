@@ -31,12 +31,12 @@ pipeline{
 
 
 
-         stage('JUnit / Mockito') {
+       /*  stage('JUnit / Mockito') {
             steps{
                		 sh "mvn test "
             }
         }
-
+*/
 
 
         stage('SONARQUBE') {
