@@ -32,9 +32,10 @@ pipeline{
 
 
          stage('JUnit / Mockito') {
-            /*steps{
-               		 sh "mvn test " 
-            }*/
+            steps{
+		    echo " test "
+               		 //sh "mvn test " 
+            }
         }
 
 
